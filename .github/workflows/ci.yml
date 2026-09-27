@@ -7,6 +7,15 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,8 +45,30 @@ jobs:
           name: dist
           path: dist/
 
-      - name: Upload single-file web app
+      - name: Upload single-file web app (artifact)
         uses: actions/upload-artifact@v4
         with:
           name: bunker-watch-webapp
           path: dist-singlefile/index.html
+
+      - name: Prepare Pages site
+        run: |
+          mkdir -p pages-site
+          cp dist-singlefile/index.html pages-site/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-site
+
+  deploy-pages:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
