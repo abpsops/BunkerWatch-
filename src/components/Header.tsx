@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <div className="flex items-center space-x-2">
                 <h1 className="text-xl font-bold tracking-tight text-white uppercase">
-                  3-Way Reconciliation
+                  Bunker Watch
                 </h1>
                 <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30">
                   Bunker Operations

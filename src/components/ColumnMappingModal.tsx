@@ -731,7 +731,7 @@ export const ColumnMappingModal: React.FC<ColumnMappingModalProps> = ({
                 )}
               </div>
               <span className="text-[10px] text-slate-400">
-                Check / uncheck any row to include or exclude it from 3-way reconciliation
+                Check / uncheck any row to include or exclude it from the reconciliation
               </span>
             </div>
 

@@ -1,6 +1,6 @@
 # Bunker Watch
 
-A 3-way bunker fuel reconciliation and analytics tool. It ingests three
+Bunker Watch is a bunker fuel reconciliation and analytics tool. It ingests three
 report types — **Enquiry Data** (requested demand), **FLOW/GPS reports**
 (your own supplied volumes), and **STS Bunkering Tracking reports**
 (barge-level operations, used to detect competitor-served vessels) — matches
@@ -18,7 +18,7 @@ never leave the machine. There is no backend and no API key required.
   with auto-detected column mapping and a manual mapping modal as a fallback
   when auto-detection can't confidently find the right columns
 - Configurable barge -> competitor mapping (persisted to `localStorage`)
-- Automated 3-way reconciliation: every enquiry is classified as
+- Automated three-report reconciliation: every enquiry is classified as
   `GPS MATCHED`, `COMPETITOR MATCHED`, or `UNVERIFIED`
 - An analytics dashboard (KPI badges, volume allocation donut, VLSFO/MGO
   fuel-grade breakdown, competitor ranking, delivery-variance, and a

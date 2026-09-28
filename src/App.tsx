@@ -85,7 +85,7 @@ export default function App() {
       return;
     }
     exportReconciliationToExcel(reconciledRecords, summary);
-    showToast('Exported 3-Way Reconciliation to Excel (.xlsx)');
+    showToast('Exported Bunker Watch reconciliation to Excel (.xlsx)');
   };
 
   const handleExportCSV = () => {
@@ -94,7 +94,7 @@ export default function App() {
       return;
     }
     exportReconciliationToCSV(reconciledRecords);
-    showToast('Exported 3-Way Reconciliation to CSV');
+    showToast('Exported Bunker Watch reconciliation to CSV');
   };
 
   const handleDownloadColorPdf = async () => {
@@ -185,7 +185,7 @@ export default function App() {
                 No Enquiry Data Uploaded
               </h2>
               <p className="text-xs text-slate-400">
-                Upload your 3 reports above (Flow/GPS, STS Tracking, and Enquiry Data) or click "Load Sample Data" to begin the 3-Way Reconciliation.
+                Upload your 3 reports above (Flow/GPS, STS Tracking, and Enquiry Data) or click "Load Sample Data" to begin.
               </p>
             </div>
             <button
@@ -300,7 +300,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4">
-          3-WAY RECONCILIATION &bull; Bunker Operations Reconciliation Module &bull; Vessel Name Matching &bull; Total Enquiry Qty = GPS Matched + Competitor Matched + Unverified
+          BUNKER WATCH &bull; Bunker Operations Reconciliation Module &bull; Vessel Name Matching &bull; Total Enquiry Qty = GPS Matched + Competitor Matched + Unverified
         </div>
       </footer>
 
