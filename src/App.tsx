@@ -37,7 +37,7 @@ export default function App() {
   const [activeView, setActiveView] = useState<ActiveView>('analytics');
 
   const { toastMessage, showToast } = useToast();
-  const { mappings, saveMappings, resetMappings } = useCompetitorMappings(showToast);
+  const { mappings, saveMappings } = useCompetitorMappings(showToast);
   const {
     gpsRecords,
     trackingRecords,
@@ -55,18 +55,12 @@ export default function App() {
     applyEnquiryConfig,
     applyGpsConfig,
     applyTrackingConfig,
-    loadSample,
     clearAll
   } = useReportUploads(showToast);
 
   // UI modal state
   const [isMappingOpen, setIsMappingOpen] = useState(false);
   const [inspectType, setInspectType] = useState<'gps' | 'tracking' | 'enquiry' | null>(null);
-
-  const handleLoadSample = () => {
-    loadSample();
-    resetMappings();
-  };
 
   // Core 3-Way Reconciliation Execution
   const reconciledRecords: ReconciledRecord[] = useMemo(() => {
@@ -146,7 +140,6 @@ export default function App() {
 
       {/* Top Header */}
       <Header
-        onLoadSample={handleLoadSample}
         onOpenMapping={() => setIsMappingOpen(true)}
         onExportExcel={handleExportExcel}
         onExportCSV={handleExportCSV}
@@ -185,15 +178,9 @@ export default function App() {
                 No Enquiry Data Uploaded
               </h2>
               <p className="text-xs text-slate-400">
-                Upload your 3 reports above (Flow/GPS, STS Tracking, and Enquiry Data) or click "Load Sample Data" to begin.
+                Upload your 3 reports above (Flow/GPS, STS Tracking, and Enquiry Data) to begin.
               </p>
             </div>
-            <button
-              onClick={handleLoadSample}
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition shadow-md"
-            >
-              Load Sample Bunker Dataset
-            </button>
           </div>
         ) : (
           /* Reconciled Results Sections */

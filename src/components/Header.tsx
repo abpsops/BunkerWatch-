@@ -1,8 +1,7 @@
 import React from 'react';
-import { Ship, RefreshCw, FileSpreadsheet, Download, Sliders, Play, Trash2, BarChart3, Palette } from 'lucide-react';
+import { Ship, RefreshCw, FileSpreadsheet, Download, Sliders, Trash2, BarChart3, Palette } from 'lucide-react';
 
 interface HeaderProps {
-  onLoadSample: () => void;
   onOpenMapping: () => void;
   onExportExcel: () => void;
   onExportCSV: () => void;
@@ -16,7 +15,6 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  onLoadSample,
   onOpenMapping,
   onExportExcel,
   onExportCSV,
@@ -81,14 +79,6 @@ export const Header: React.FC<HeaderProps> = ({
                   {mappingsCount}
                 </span>
               )}
-            </button>
-
-            <button
-              onClick={onLoadSample}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-sm transition"
-            >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Load Sample Data</span>
             </button>
 
             {hasData && (

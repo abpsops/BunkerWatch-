@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { CompetitorMapping } from '../types/reconciliation';
-import { INITIAL_COMPETITOR_MAPPINGS } from '../data/sampleData';
 
 const STORAGE_KEY = 'bunker_reconciliation_mappings';
 
@@ -11,7 +10,7 @@ function loadStoredMappings(): CompetitorMapping[] {
   } catch {
     // fall through to defaults
   }
-  return INITIAL_COMPETITOR_MAPPINGS;
+  return [];
 }
 
 /**
@@ -30,7 +29,5 @@ export function useCompetitorMappings(showToast: (text: string) => void) {
     showToast(`Updated ${newMappings.length} competitor barge mappings.`);
   };
 
-  const resetMappings = () => setMappings(INITIAL_COMPETITOR_MAPPINGS);
-
-  return { mappings, saveMappings, resetMappings };
+  return { mappings, saveMappings };
 }

@@ -117,7 +117,7 @@ export const CompetitorMappingModal: React.FC<CompetitorMappingModalProps> = ({
                 <label className="block text-[11px] text-slate-400 mb-1">Barge Name</label>
                 <input
                   type="text"
-                  placeholder="e.g. BUNKER DUKE"
+                  placeholder="Barge name"
                   value={newBarge}
                   onChange={(e) => setNewBarge(e.target.value)}
                   className="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-white font-mono text-xs focus:outline-none focus:border-blue-500"
@@ -127,7 +127,7 @@ export const CompetitorMappingModal: React.FC<CompetitorMappingModalProps> = ({
                 <label className="block text-[11px] text-slate-400 mb-1">Competitor Company</label>
                 <input
                   type="text"
-                  placeholder="e.g. World Fuel Services"
+                  placeholder="Competitor name"
                   value={newCompetitor}
                   onChange={(e) => setNewCompetitor(e.target.value)}
                   className="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-blue-500"

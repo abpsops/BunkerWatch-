@@ -10,14 +10,6 @@ import {
   TrackingColumnConfig
 } from '../types/reconciliation';
 import {
-  SAMPLE_ENQUIRIES,
-  SAMPLE_GPS_RECORDS,
-  SAMPLE_TRACKING_RECORDS,
-  SAMPLE_ENQUIRY_ROWS,
-  SAMPLE_GPS_ROWS,
-  SAMPLE_TRACKING_ROWS
-} from '../data/sampleData';
-import {
   fileToWorkbook,
   sheetTo2DArray,
   parseFlowReport,
@@ -26,27 +18,6 @@ import {
 } from '../utils/parsers';
 
 export type ReportType = 'gps' | 'tracking' | 'enquiry';
-
-const SAMPLE_RAW: Record<ReportType, RawReportState> = {
-  gps: {
-    fileName: 'Sample-Flow-GPS-Report.xlsx',
-    sheetNames: ['Actual Supply Log', 'Fleet Summary'],
-    selectedSheet: 'Actual Supply Log',
-    rows: SAMPLE_GPS_ROWS
-  },
-  tracking: {
-    fileName: 'Sample-STS-Tracking-Report.xlsx',
-    sheetNames: ['STS Operations'],
-    selectedSheet: 'STS Operations',
-    rows: SAMPLE_TRACKING_ROWS
-  },
-  enquiry: {
-    fileName: 'Sample-Enquiry-Data.xlsx',
-    sheetNames: ['Enquiry Data'],
-    selectedSheet: 'Enquiry Data',
-    rows: SAMPLE_ENQUIRY_ROWS
-  }
-};
 
 interface UploadConfig<T> {
   reportType: ReportType;
@@ -66,13 +37,13 @@ interface UploadConfig<T> {
  * success/warning copy instead of re-implementing the whole flow.
  */
 export function useReportUploads(showToast: (text: string, type?: 'success' | 'warning') => void) {
-  const [gpsRecords, setGpsRecords] = useState<GpsRecord[]>(SAMPLE_GPS_RECORDS);
-  const [trackingRecords, setTrackingRecords] = useState<StsTrackingRecord[]>(SAMPLE_TRACKING_RECORDS);
-  const [enquiryRecords, setEnquiryRecords] = useState<EnquiryRecord[]>(SAMPLE_ENQUIRIES);
+  const [gpsRecords, setGpsRecords] = useState<GpsRecord[]>([]);
+  const [trackingRecords, setTrackingRecords] = useState<StsTrackingRecord[]>([]);
+  const [enquiryRecords, setEnquiryRecords] = useState<EnquiryRecord[]>([]);
 
-  const [rawGps, setRawGps] = useState<RawReportState | null>(SAMPLE_RAW.gps);
-  const [rawTracking, setRawTracking] = useState<RawReportState | null>(SAMPLE_RAW.tracking);
-  const [rawEnquiry, setRawEnquiry] = useState<RawReportState | null>(SAMPLE_RAW.enquiry);
+  const [rawGps, setRawGps] = useState<RawReportState | null>(null);
+  const [rawTracking, setRawTracking] = useState<RawReportState | null>(null);
+  const [rawEnquiry, setRawEnquiry] = useState<RawReportState | null>(null);
 
   const [wbGps, setWbGps] = useState<XLSX.WorkBook | null>(null);
   const [wbTracking, setWbTracking] = useState<XLSX.WorkBook | null>(null);
@@ -181,16 +152,6 @@ export function useReportUploads(showToast: (text: string, type?: 'success' | 'w
     showToast(`Applied column mapping: ${records.length} STS operations.`);
   };
 
-  const loadSample = () => {
-    setGpsRecords(SAMPLE_GPS_RECORDS);
-    setTrackingRecords(SAMPLE_TRACKING_RECORDS);
-    setEnquiryRecords(SAMPLE_ENQUIRIES);
-    setRawGps(SAMPLE_RAW.gps);
-    setRawTracking(SAMPLE_RAW.tracking);
-    setRawEnquiry(SAMPLE_RAW.enquiry);
-    showToast('Loaded realistic bunker operations sample data.');
-  };
-
   const clearAll = () => {
     setGpsRecords([]);
     setTrackingRecords([]);
@@ -222,7 +183,6 @@ export function useReportUploads(showToast: (text: string, type?: 'success' | 'w
     applyEnquiryConfig,
     applyGpsConfig,
     applyTrackingConfig,
-    loadSample,
     clearAll
   };
 }

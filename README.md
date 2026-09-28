@@ -25,8 +25,6 @@ never leave the machine. There is no backend and no API key required.
   daily/weekly/monthly trend chart) exportable as a colored PDF, PNG,
   colorized Excel, or standalone HTML
 - A sortable, filterable, multi-select reconciliation table
-- Sample dataset built in, so you can explore the tool without uploading
-  anything
 
 ## Run locally
 
@@ -64,7 +62,6 @@ src/
     normalizer.ts            # vessel-name / fuel-grade normalization
     reconciliationEngine.ts  # the 3-way matching + summary/competitor/period math
     exportUtils.ts           # PDF / PNG / colorized Excel / HTML export
-  data/sampleData.ts         # built-in sample dataset
   types/reconciliation.ts    # shared domain types
 ```
 
