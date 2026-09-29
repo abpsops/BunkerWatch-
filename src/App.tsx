@@ -209,7 +209,9 @@ export default function App() {
                       </span>
                     )}
                     {id === 'analytics' && (
-                      <span className="px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-semibold">
+                      <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-semibold ${
+                        activeView === id ? 'bg-white/25 text-white' : 'bg-emerald-500/20 text-emerald-300'
+                      }`}>
                         Visual
                       </span>
                     )}

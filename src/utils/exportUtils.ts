@@ -6,6 +6,11 @@ import { ReconciledRecord, ReconciliationSummary } from '../types/reconciliation
 /**
  * Standard XLSX Export
  */
+/** Background colour the page is currently showing (differs between light and dark theme). */
+function currentPageBackground(): string {
+  return getComputedStyle(document.body).backgroundColor || '#020617';
+}
+
 export function exportReconciliationToExcel(records: ReconciledRecord[], summary?: ReconciliationSummary): void {
   const data = records.map(r => ({
     'Date': r.date || '',
@@ -129,7 +134,7 @@ export async function downloadColoredPdfReport(elementId: string, filename?: str
       scale: 2,
       useCORS: true,
       logging: false,
-      backgroundColor: '#020617', // Slate-950 dark background for exact color preservation
+      backgroundColor: currentPageBackground(), // match the active theme
       windowWidth: element.scrollWidth,
       windowHeight: element.scrollHeight
     });
@@ -178,7 +183,7 @@ export async function downloadColoredPngReport(elementId: string, filename?: str
       scale: 2,
       useCORS: true,
       logging: false,
-      backgroundColor: '#020617'
+      backgroundColor: currentPageBackground()
     });
 
     const link = document.createElement('a');

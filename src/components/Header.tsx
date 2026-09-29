@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeToggle } from './ThemeToggle';
 import { Ship, RefreshCw, FileSpreadsheet, Download, Sliders, Trash2, BarChart3, Palette } from 'lucide-react';
 
 interface HeaderProps {
@@ -135,6 +136,8 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </>
             )}
+
+            <ThemeToggle />
           </div>
         </div>
       </div>

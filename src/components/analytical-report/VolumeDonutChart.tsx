@@ -47,7 +47,7 @@ export const VolumeDonutChart: React.FC<VolumeDonutChartProps> = ({
         <div className="relative w-48 h-48 shrink-0 flex items-center justify-center">
           <svg className="w-full h-full -rotate-90 transform" viewBox="0 0 180 180">
             {/* Background Ring */}
-            <circle cx="90" cy="90" r={donutRadius} stroke="#1e293b" strokeWidth="22" fill="transparent" />
+            <circle cx="90" cy="90" r={donutRadius} strokeWidth="22" fill="transparent" className="stroke-slate-800" />
 
             {/* GPS Matched Slice */}
             {activeSummary.gpsMatchedQty > 0 && (
